@@ -43,6 +43,7 @@
                 <groupId>de.eleon.elasticspring.impl</groupId>
                 <artifactId>elastic-spring-impl</artifactId>
                 <version>1.0-SNAPSHOT</version>
+                <scope>runtime</scope>
             </dependency>
 
             <dependency>
