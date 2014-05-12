@@ -1,4 +1,4 @@
-Spring based Elasticsearch quickstart project
+Elasticsearch quickstart project
 ==========================
 
 # Build 
@@ -34,10 +34,10 @@ Add the package "de.eleon.elasticspring.data.impl" to your component scan.
 
 Add the following properties to your application.properties:
 
-elastic.host=
-elastic.port=
-elastic.indexname=myindex
-elastic.deleteOnStartup=false
+	elastic.host=
+	elastic.port=
+	elastic.indexname=myindex
+	elastic.deleteOnStartup=false
 
 If host or port is null, an embedded elasticsearch instance will be used.
 
