@@ -18,11 +18,11 @@ public class ElementServiceImpl implements ElementService {
     Client client;
 
     @Autowired
-    IndexService indexService;
+    IndexServiceImpl indexServiceImpl;
 
     @Override
     public boolean write(String type, String id, String json) {
-        return client.prepareIndex(indexService.getIndexName(), type, id)
+        return client.prepareIndex(indexServiceImpl.getIndexName(), type, id)
                 .setSource(json)
                 .execute()
                 .actionGet()
@@ -31,14 +31,14 @@ public class ElementServiceImpl implements ElementService {
 
     @Override
     public GetResponse get(String type, String id) {
-        return client.prepareGet(indexService.getIndexName(), type, id)
+        return client.prepareGet(indexServiceImpl.getIndexName(), type, id)
                 .execute()
                 .actionGet();
     }
 
     @Override
     public boolean delete(String type, String id) {
-        return client.prepareDelete(indexService.getIndexName(), type, id)
+        return client.prepareDelete(indexServiceImpl.getIndexName(), type, id)
                 .execute()
                 .actionGet()
                 .isFound();
@@ -53,7 +53,7 @@ public class ElementServiceImpl implements ElementService {
     public void deleteAll(String type, QueryBuilder queryBuilder) {
         QuerySourceBuilder qsb = new QuerySourceBuilder()
                 .setQuery(queryBuilder);
-        DeleteByQueryRequest deleteByQueryRequest = new DeleteByQueryRequest(indexService.getIndexName())
+        DeleteByQueryRequest deleteByQueryRequest = new DeleteByQueryRequest(indexServiceImpl.getIndexName())
                 .types(type)
                 .source(qsb);
         client.deleteByQuery(deleteByQueryRequest)
@@ -63,7 +63,7 @@ public class ElementServiceImpl implements ElementService {
     @Override
     public void updateElement(String type, String id, String field, String value) {
         String script = String.format("ctx._source.%s=\"%s\"", field, value);
-        client.prepareUpdate(indexService.getIndexName(), type, id)
+        client.prepareUpdate(indexServiceImpl.getIndexName(), type, id)
                 .setScript(script)
                 .execute()
                 .actionGet()
@@ -73,7 +73,7 @@ public class ElementServiceImpl implements ElementService {
     @Override
     public void updateElement(String type, String id, String field, Number value) {
         String script = String.format("ctx._source.%s=%s", field, value);
-        client.prepareUpdate(indexService.getIndexName(), type, id)
+        client.prepareUpdate(indexServiceImpl.getIndexName(), type, id)
                 .setScript(script)
                 .execute()
                 .actionGet()
@@ -82,14 +82,14 @@ public class ElementServiceImpl implements ElementService {
 
     @Override
     public long count(String type) {
-        return client.count(new CountRequest(indexService.getIndexName()).types(type))
+        return client.count(new CountRequest(indexServiceImpl.getIndexName()).types(type))
                 .actionGet()
                 .getCount();
     }
 
     @Override
     public boolean exists(String type, String id) {
-        return client.prepareGet(indexService.getIndexName(), type, id)
+        return client.prepareGet(indexServiceImpl.getIndexName(), type, id)
                 .execute()
                 .actionGet()
                 .isExists();

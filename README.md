@@ -42,5 +42,17 @@ Add the following properties to your application.properties:
 If host or port is null, an embedded elasticsearch instance will be used.
 
 
- 
+## Available Services
+
+### de.eleon.elasticspring.data.api.ClientService
+
+### de.eleon.elasticspring.data.api.IndexService
+
+### de.eleon.elasticspring.data.api.TypeService
+
+### de.eleon.elasticspring.data.api.ElementService
+
+### de.eleon.elasticspring.data.api.SearchService 
+
+
 

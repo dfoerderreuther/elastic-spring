@@ -21,7 +21,7 @@ public class ElementServiceImplTest {
     ElementServiceImpl elementServiceImpl;
 
     @Autowired
-    IndexService indexService;
+    IndexServiceImpl indexServiceImpl;
 
     String type = "test";
     String json = "{\"name\":\"test\"}";
@@ -55,7 +55,7 @@ public class ElementServiceImplTest {
         elementServiceImpl.write(type, "1c1", json);
         elementServiceImpl.write(type, "1c2", json);
         elementServiceImpl.write(type, "1c3", json);
-        indexService.flushIndex();
+        indexServiceImpl.flushIndex();
         assertThat(elementServiceImpl.count(type), is(3l));
     }
 
@@ -64,7 +64,7 @@ public class ElementServiceImplTest {
         elementServiceImpl.write(type, "1e1", json);
         elementServiceImpl.write(type, "1e2", json);
         elementServiceImpl.write(type, "1e3", json);
-        indexService.flushIndex();
+        indexServiceImpl.flushIndex();
         assertThat(elementServiceImpl.count(type), greaterThan(2l));
         elementServiceImpl.deleteAll(type);
         assertThat(elementServiceImpl.count(type), is(0l));

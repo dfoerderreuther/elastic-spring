@@ -22,4 +22,5 @@ public interface ElementService {
     long count(String type);
 
     boolean exists(String type, String id);
+
 }
