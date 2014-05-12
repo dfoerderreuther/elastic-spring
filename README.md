@@ -46,13 +46,25 @@ If host or port is null, an embedded elasticsearch instance will be used.
 
 ### de.eleon.elasticspring.data.api.ClientService
 
+ClientService opens a connection to an elasticsearch server or starts a new instance of an embedded elasticsearch node.
+
+
 ### de.eleon.elasticspring.data.api.IndexService
+
+IndexService is managing indexes of an elasticsearch server
+
 
 ### de.eleon.elasticspring.data.api.TypeService
 
+Manage Types in index
+
+
 ### de.eleon.elasticspring.data.api.ElementService
+
+Managing Elements in elasticsearch index
+
 
 ### de.eleon.elasticspring.data.api.SearchService 
 
-
+SearchService for searching in elasticsearch index
 
