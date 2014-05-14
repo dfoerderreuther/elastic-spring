@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(value = "de.eleon.elasticspring.data.impl")
+@ComponentScan(value = "de.eleon.elasticspring.impl")
 @PropertySource("classpath:elastic.properties")
 public class TestConfiguration {
 
